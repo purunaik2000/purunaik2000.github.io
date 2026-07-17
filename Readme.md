@@ -6,7 +6,7 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 
 View my portfolio here:
 
-**https://purunaik2000.github.io/MyPortfolio/**
+**https://purunaik2000.github.io/**
 
 ## 🚀 Technologies Used
 
