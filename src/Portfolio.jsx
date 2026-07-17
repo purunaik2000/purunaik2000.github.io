@@ -56,24 +56,41 @@ const featuredProjects = [
 const experienceTimeline = [
   {
     period: "DEC 2025 — JUN 2026",
-    role: "Golang Developer",
+    role: "Software Development Engineer",
     company: "Mindorigin",
-    description:
-      "Architecting high-throughput distributed systems in Golang. Built low-latency asynchronous systems utilizing Kafka and NATS for concurrent message execution.",
+    highlights: [
+      "Developed scalable backend services in Golang for distributed systems.",
+      "Built event-driven microservices using Kafka and NATS for real-time asynchronous communication.",
+      "Participated in architecture design for low-latency, high-throughput backend services.",
+      "Improved inter-service communication, performance, and system reliability.",
+    ],
+    tech: ["Go", "Kafka", "NATS", "Redis", "Docker", "gRPC", "Elasticsearch", "Prometheus", "Grafana", "FluentD"],
   },
   {
     period: "NOV 2023 — DEC 2025",
-    role: "SDE I",
+    role: "Software Development Engineer I",
     company: "Algowiz",
-    description:
-      "Designed backend automated execution suites & trade-mirroring infrastructure. Managed transition models of sub-millisecond replication systems with minimal DOM overhead.",
+    highlights: [
+      "Designed and developed backend services for Fintarget, Fincopy, and Findiscrite trading platforms.",
+      "Built APIs powering automated and custom trading strategies with low-latency execution.",
+      "Developed trade-mirroring infrastructure supporting multi-account replication in real time.",
+      "Contributed to architecture decisions for scalable microservices and event-driven systems.",
+      "Optimized React applications handling high-frequency live market data (LTP).",
+    ],
+    tech: ["Node.js", "Express", "React", "MongoDB", "Redis", "WebSocket", "Go", "Redpanda", "Protobuf", "AWS"],
   },
   {
     period: "NOV 2022 — OCT 2023",
     role: "Backend Developer",
     company: "FunctionUp",
-    description:
-      "Developed reliable full-stack REST microservices under MongoDB, Node, and Express patterns optimizing query operations.",
+    highlights: [
+      "Built full-stack MERN applications for real-world business use cases.",
+      "Developed RESTful APIs using Node.js, Express, and MongoDB.",
+      "Designed scalable backend modules with optimized database queries.",
+      "Collaborated with cross-functional teams to deliver production-ready features.",
+      "Mentored students in JavaScript and Data Structures & Algorithms (DSA) through live coding sessions, doubt resolution, and code reviews.",
+    ],
+    tech: ["Node.js", "Express", "MongoDB", "React", "REST API"],
   },
 ];
 
@@ -177,10 +194,11 @@ export default function Portfolio() {
             <p className="max-w-xl text-slate-400 text-sm sm:text-base leading-relaxed">
               I specialize in low-latency microservices, event-driven pipelines,
               and high-frequency real-time execution layers. Actively building
-              robust infrastructures with <strong>Golang</strong>,{" "}
-              <strong>Node.js</strong>, and modern message brokers.
+              robust infrastructures with <strong>Node.js</strong>,{" "} <strong>Golang</strong>,{" "}
+              <strong>React</strong>, and modern message brokers.
             </p>
           </div>
+          
 
           <div className="flex flex-wrap gap-6 text-xs text-slate-400 pt-4 border-t border-slate-900">
             <div className="flex items-center gap-2">
@@ -362,25 +380,55 @@ export default function Portfolio() {
             description={null}
           />
 
-          <div className="flex flex-col gap-6">
+          <div className="relative border-l border-slate-800 ml-2">
             {experienceTimeline.map((item) => (
-              <div
-                key={item.period}
-                className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 rounded-2xl hover:bg-slate-950/50 transition-all border border-transparent hover:border-slate-900"
-              >
-                <div className="text-xs text-slate-500 font-bold md:pt-1">
+              <div key={item.period} className="relative pl-8 pb-10">
+                {/* Timeline Dot */}
+                <div className="absolute -left-2.25 top-2 h-4 w-4 rounded-full border-4 border-slate-950 bg-blue-500 " />
+
+                {/* Period */}
+                <span className="text-xs font-semibold tracking-widest uppercase text-slate-500">
                   {item.period}
-                </div>
-                <div className="md:col-span-3 space-y-2">
-                  <h4 className="text-sm font-bold text-white">
-                    {item.role}{" "}
-                    <span className="text-blue-500 font-normal">
-                      &middot; {item.company}
-                    </span>
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                    {item.description}
-                  </p>
+                </span>
+
+                {/* Card */}
+                <div className="mt-3 rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-slate-950/50 hover:shadow-xl hover:shadow-blue-500/5">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">
+                        {item.role}
+                      </h3>
+
+                      <p className="text-blue-400 font-medium">
+                        {item.company}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Highlights */}
+                  <ul className="mt-5 space-y-3">
+                    {item.highlights.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-start gap-3 text-sm text-slate-400 leading-6"
+                      >
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tech Stack */}
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {item.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
